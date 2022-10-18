@@ -116,7 +116,7 @@ Resources:
         - IpProtocol: tcp
           FromPort: '22'
           ToPort: '22'
-          CidrIp: 120.102.160.6
+          CidrIp: 98.97.8.100/32
       Tags:
         - Key: Name
           Value: GRIMES-CF-SECURITY-GROUP
