@@ -56,9 +56,6 @@ Resources:
     Properties:
       VpcId: !Ref VPC
       InternetGatewayId: !Ref InternetGateway
-      Tags:
-        - Key: Name
-          Value: GRIMES-CF-ATTACH-GATEWAY
   RouteTable:
     Type: 'AWS::EC2::RouteTable'
     Properties:
@@ -75,26 +72,17 @@ Resources:
       RouteTableId: !Ref RouteTable
       DestinationCidrBlock: 0.0.0.0/0
       GatewayId: !Ref InternetGateway
-      Tags:
-        - Key: Name
-          Value: GRIMES-CF-ROUTE
   SubnetRouteTableAssociation:
     Type: 'AWS::EC2::SubnetRouteTableAssociation'
     Properties:
       SubnetId: !Ref Subnet
       RouteTableId: !Ref RouteTable
-      Tags:
-        - Key: Name
-          Value: GRIMES-CF-SUBNET-ROUTE-TABLE
   UbuntuIPAddress:
     Type: 'AWS::EC2::EIP'
     DependsOn: AttachGateway
     Properties:
       Domain: vpc
       InstanceId: !Ref PublicUbuntuInstance
-      Tags:
-        - Key: Name
-          Value: GRIMES-CF-IP-ADDRESS
   Lab1SecurityGroup:
     Type: 'AWS::EC2::SecurityGroup'
     Properties:
